@@ -2,6 +2,8 @@
 
 /**
  * Este arquivo é parte do software linequest
+ * Ambiente de questionários para a coleta de dados
+ * 
  * Laboratório de Informática na Educação - LInE
  * https://www.usp.br/line/
  * 

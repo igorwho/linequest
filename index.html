@@ -64,6 +64,18 @@
       e <span class="badge">POST</span>.</div>
       
 
+      <h3 class="page-header">Como o LInE Quest armazena as informações</h3>
+      <center><img src="assets/img/request.png" width="300rem" style="margin-top: 2em; margin-bottom: 1em;"></center>
+      <p>Uma vez que os formulários são respondidos e estas informações são submetidas ao LInE Quest, a seguinte sequência de passos é realizada pelo sistema:</p>
+      <ol>
+        <li>É procedida uma verificação do campo "form", caso não tenha sido submetido, o LInE Quest rejeitará os dados. Portanto, esteja atento à configuração do seu formulário!</li>
+        <li>São adicionadas as seguintes informações aos dados recebidos: </li>
+        &nbsp;&nbsp;i. endereço IP do usuário respondente.<br>
+        &nbsp;&nbsp;ii. carimbo de data e hora de recebimento do formulário no servidor.
+        <li>Todos os dados são convertidos para o formato <a target="_blank" href="https://www.json.org/json-pt.html">JSON</a>, compondo uma única String.</li>
+        <li>A String gerada pela conversão é gravada no banco de dados MySQL.</li>
+      </ol>
+
     </div>
 
 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <title>LInE Quest</title>
+
+    <style>
+      body {
+        background-color: #e9ecef;;
+      }
+      .page-header {
+        margin-top: 1em;
+        border-top: 1px solid rgb(155, 155, 155);
+        padding-top: .5em;
+      }
+      .badge {
+        font-size: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="jumbotron">
+      <p style="float:right; color: #333; font-weight: 300;">Free Education, Private Data (FEPD)</p>
+      <img src="assets/img/logo.png" width="250px">
+      <p style="font-size: 21px; color: #333; font-weight: 300;">Plataforma para questionários</p>
+      
+
+      <h3 class="page-header">Sobre o LInE Quest</h3>
+      <p>Este é um ambiente para a disponibilização de questionários públicos do Laboratório de Informática na Educação do Instituto de Matemática e Estatística da Universidade de São Paulo. 
+        É desenvolvido e mantido pelos alunos de pós graduação Igor Moreira Félix e Lucas Mendonça de Souza.
+        Para conhecer nosso grupo e trabalhos que estamos desenvolvendo, visite o seguinte endereço: <a href="https://www.usp.br/line/">https://www.usp.br/line/</a>.</p>
+      <p>O LInE Quest é gratuito e de código aberto, podendo ser acessado e copiado na área de projetos do LInE: <a href="http://200.144.254.107/git/LInE/linequest">http://200.144.254.107/git/LInE/linequest</a>.</a></p>
+      
+      <h3 class="page-header">Estrutura do LInE Quest</h3>
+      <p>Conheça na figura abaixo, a estrutura de diretórios que compõem o LInE Quest:</p>
+      <img src="assets/img/structure.png" width="90px" style="margin-left: 1em;margin-bottom: 1em;">
+
+      <h3 class="page-header">Como disponibilizar um questionário utilizando o LInE Quest</h3>
+      
+      <p>Para disponibilizar seu questionário público, a fim de coletar dados relacionados às pesquisas, siga os passos abaixo:</p>
+      <ol>
+        <li>Crie uma página HTML, contendo seu formulário. Caso ainda não tenha experiência com formulários, acesse <a href="https://www.w3schools.com/html/html_forms.asp">este endereço</a>.</li>
+
+        <li>Inclua no seu formulário, um campo oculto (type="hidden") com nome "form", com o valor que identifique o seu formulário. Exemplo: <span class="badge">&lt;input type="hidden" name="form" value="Pesquisa_iVProg"&gt;</span></li>
+
+        <li>Aponte seu formulário para o endereço <span class="badge">/linequest/app/post.php</span></li>
+
+        <li>Disponibilize sua página HTML no diretório <span class="badge">/linequest/forms/</span> </li>
+
+        <li>Divulgue a página <span class="badge">http://usp.br/line/linequest/forms/MEUFORM.html</span></li>
+      </ol>
+
+      <div class="alert alert-info" role="alert">
+        <b>Observação:</b>
+        Os dados podem ser enviados por meio de requisições HTTP utilizando-se os métodos
+        <span class="badge">GET</span>
+      e <span class="badge">POST</span>.</div>
+      
+
+    </div>
+
+
+    <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -46,8 +46,10 @@
             store(json_encode($data, JSON_UNESCAPED_UNICODE));
         } catch (Exception $e) {
             echo print_error($e->getMessage());
+            exit;
         }
         
+        header('Location: thanks.html');
     }
     
     /**

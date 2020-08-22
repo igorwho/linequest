@@ -91,7 +91,7 @@
     <form>
         Selecione o identificador do formulário: 
             <select name="formulario" onchange="this.form.submit()">
-                <option></option>";
+                <option></option>
                 <?php
                     foreach($all_forms as $form) {
                         if ((isset($_GET['formulario'])

@@ -6,8 +6,6 @@
         exit;
     }
 ?>  
-    
-
 
 <html>
 <head>
@@ -136,8 +134,9 @@
             }
         }
 
-        print '<tr>';
+        print '<tr> <th>id</th>';
         foreach($all_fields as $field) {
+            if ($field == 'id') continue;
             print "<th>$field</th>";
         }
         print '</tr>';
@@ -145,8 +144,9 @@
         foreach($res_data as $form) {
 
             print '<tr>';
+            print '<td>'.$form->id.'</td>';
             foreach($all_fields as $field) {
-                //if ($field === 'form') continue;
+                if ($field == 'id') continue;
                 print '<td>';
                 if ($field === 'timestamp') {
                     print date("H:i:s d/m/Y", $form->$field).'</td>';

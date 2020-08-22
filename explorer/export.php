@@ -22,7 +22,7 @@
     $output = fopen('php://output', 'w');
 
     
-    $all_fields = array();
+    $all_fields = array('id');
 
     foreach($res_data as $form) {
         foreach($form as $key => $val) {
@@ -38,7 +38,10 @@
     foreach($res_data as $form) {
 
         $prepared = array();
+        $prepared[] = $form->id;
         foreach($all_fields as $field) {
+
+            if ($field == 'id') continue;
             
             if ($field === 'timestamp') {
                 $prepared[] = date("H:i:s d/m/Y", $form->$field);

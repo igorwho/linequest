@@ -27,8 +27,6 @@
 
  function store ($data) {
     global $DB; connect();
-
-    echo $data;
     
     $sql = "INSERT INTO records (id, form)
             VALUES (null, ?)";
@@ -46,6 +44,92 @@
     }
 
     $DB->close();
+ }
+
+ function get_forms () {
+    global $DB; connect();
+
+    $sql = "SELECT form FROM records";
+
+    if (!($stmt = $DB->prepare($sql))) {
+        echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+    }
+
+    $stmt->execute();
+
+    $res_data = mysqli_stmt_get_result($stmt);
+
+    $all_forms = array();
+
+    while($row = mysqli_fetch_array($res_data)){
+        $data = json_decode($row['form']);
+        if(!in_array($data->form, $all_forms)){
+            $all_forms[] = $data->form;
+        }
+    }
+
+    sort($all_forms);
+
+    return $all_forms;
+ }
+
+ function get_total_rows ($form_id) {
+    global $DB; connect();
+    
+    $sql = "SELECT form FROM records";
+
+    if (!($stmt = $DB->prepare($sql))) {
+        echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+    }
+    
+    $stmt->execute();
+
+    $res_data = mysqli_stmt_get_result($stmt);
+
+    $count = 0;
+
+    while($row = mysqli_fetch_array($res_data)){
+        $data = json_decode($row['form']);
+        if ($data->form == $form_id) {
+            $count ++;
+        }
+    }
+
+    return $count;
+ }
+
+ function get_records_pagination($form_id, $offset, $no_of_records_per_page) {
+    global $DB; connect();
+
+    $sql = "SELECT * FROM records";
+
+    if (!($stmt = $DB->prepare($sql))) {
+        echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+    }
+    
+    $stmt->execute();
+    
+    $res_data = mysqli_stmt_get_result($stmt);
+    
+    $all_data = array();
+
+    $count = 0;
+    $included = 0;
+    
+    while($row = mysqli_fetch_array($res_data)){
+        $data = json_decode($row['form']);
+        if ($data->form == $form_id) {
+            $data->id = $row['id'];
+            $count++;
+            if ($count-1 >= $offset) {
+                $included ++;
+                if ($included-1 == $no_of_records_per_page) break;
+                $all_data[] = $data;
+            }
+            
+        }
+    }
+    return $all_data;
  }
 
  ?>

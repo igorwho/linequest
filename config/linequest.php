@@ -20,5 +20,6 @@
     $CFG->dbname    = ''; # Nome da base criada no MySQL ou MariaDB
     $CFG->dbuser    = '';  # Usuário com permissão de leitura/escrita na base
     $CFG->dbpass    = ''; # Senha do usuário
+    $CFG->viewpass  = ''; # Senha para visualizar os dados no navegador
 
 ?>

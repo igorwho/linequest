@@ -25,12 +25,44 @@
     $DB->set_charset("utf8");
  }
 
- function store ($data) {
+ function get_id_by_uuid ($uuid) {
     global $DB; connect();
-    
-    $sql = "INSERT INTO records (id, form)
-            VALUES (null, ?)";
 
+    $sql = "SELECT * FROM records";
+
+    if (!($stmt = $DB->prepare($sql))) {
+        echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+    }
+    
+    $stmt->execute();
+    
+    $res_data = mysqli_stmt_get_result($stmt);
+    
+    $all_data = array();
+    
+    while($row = mysqli_fetch_array($res_data)){
+        $data = json_decode($row['form']);
+        if (isset($data->uuid) && ($data->uuid == $uuid)) {
+            return $row['id'];
+        }
+    }
+    return -1;
+ }
+
+ function store ($data, $uuid = null) {
+    global $DB; connect();
+
+    $sql = "";
+
+    $id_p = get_id_by_uuid($uuid);
+    if ($id_p >= 0) {
+        $sql =  "UPDATE records SET form = ?
+                WHERE id = " . $id_p;
+    } else {
+        $sql =  "INSERT INTO records (id, form)
+                VALUES (null, ?)";
+    }
+    
     if (!($stmt = $DB->prepare($sql))) {
         echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
     }

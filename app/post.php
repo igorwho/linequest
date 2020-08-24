@@ -43,7 +43,11 @@
 
         require_once('../controller/forms.php');
         try {
-            store(json_encode($data, JSON_UNESCAPED_UNICODE));
+            if (isset($data['uuid'])) {
+                store(json_encode($data, JSON_UNESCAPED_UNICODE), $data['uuid']);
+            } else {
+                store(json_encode($data, JSON_UNESCAPED_UNICODE));
+            }
         } catch (Exception $e) {
             echo print_error($e->getMessage());
             exit;

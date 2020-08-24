@@ -29,6 +29,8 @@
         table tr:nth-child(even){background-color: #f2f2f2;}
 
         table tr:hover {background-color: #ddd;}
+        
+        table tr:hover td {border: 1px solid white;}
 
         table th {
             padding-top: 12px;

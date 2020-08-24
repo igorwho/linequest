@@ -152,7 +152,8 @@
                     print date("H:i:s d/m/Y", $form->$field).'</td>';
                     continue;
                 }
-                print $form->$field.'</td>';
+                if (isset($form->$field)) print $form->$field.'</td>';
+                else print '</td>';
             
             }
             print '</tr>';

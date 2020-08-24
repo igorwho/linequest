@@ -47,7 +47,9 @@
                 $prepared[] = date("H:i:s d/m/Y", $form->$field);
                 continue;
             }
-            $prepared[] = $form->$field;
+
+            if (isset($form->$field)) $prepared[] = $form->$field;
+            else $prepared[] = '';
             
         }
         fputcsv($output, $prepared);

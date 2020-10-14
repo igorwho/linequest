@@ -4,6 +4,8 @@ Plataform for online forms, to collect data for researches, keeping private data
 
 This project has been developed in the [Lab of Informatics in Education](http://line.ime.usp.br/).
 
+It's running at http://usp.br/line/linequest/.
+
 ## Summary
 
   - [Getting Started](#getting-started)

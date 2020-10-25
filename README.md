@@ -25,9 +25,9 @@ This is a PHP project. To use it, download files to your local/online server roo
 
 ### Installing
 
-Copy the files to server root directory.
-And access the server address in your web browser.
-Other instructions can be accessed in https://usp.br/line/linequest/.
+1. Copy the files to server root directory.
+1. And access the server address in your web browser.
+1. Other instructions can be accessed in https://usp.br/line/linequest/.
 
 ## Authors
 
